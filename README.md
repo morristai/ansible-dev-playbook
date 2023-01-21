@@ -1,4 +1,4 @@
-# Windows Setup Ansible Playbook
+# My Dev PC/Mac Setup Ansible Playbook
 This playbook installs and configures most of the software I use on my Windows machine for software development and entertainment.
 
 ## Project Structure
