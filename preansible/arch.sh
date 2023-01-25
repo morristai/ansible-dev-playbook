@@ -1,5 +1,5 @@
 # Bash inside Arch
-sudo pacman -S python3 python-pip
+sudo pacman -Sy --noconfirm python3 python-pip
 python3 -m pip install --user ansible
 export PATH=$PATH:$HOME/.local/bin
 
@@ -7,5 +7,5 @@ export PATH=$PATH:$HOME/.local/bin
 python3 -m pip install --user argcomplete
 activate-global-python-argcomplete --user # for bash
 
-# Ansible Galaxy init
+# Ansible Galaxy init, sometime need to try sometime
 ansible-galaxy collection install -r requirements.yml

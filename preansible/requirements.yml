@@ -1,5 +1,9 @@
+# roles:
+#   - name: elliotweiser.osx-command-line-tools
+#   - name: geerlingguy.dotfiles
+
 collections:
-  - name: community.genera # Install Community General Collection
+  - name: community.general # Install Community General Collection
   - name: chocolatey.chocolatey
   - name: kewlfft.aur  # https://galaxy.ansible.com/kewlfft/aur
   
