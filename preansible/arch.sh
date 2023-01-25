@@ -7,5 +7,5 @@ export PATH=$PATH:$HOME/.local/bin
 python3 -m pip install --user argcomplete
 activate-global-python-argcomplete --user # for bash
 
-# Ansible
-ansible-galaxy collection install chocolatey.chocolatey
+# Ansible Galaxy init
+ansible-galaxy collection install -r requirements.yml

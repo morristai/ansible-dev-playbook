@@ -1,0 +1,9 @@
+[submodule "example/mac-dev-playbook"]
+	path = example/mac-dev-playbook
+	url = https://github.com/geerlingguy/mac-dev-playbook.git
+[submodule "example/devtainer"]
+	path = example/devtainer
+	url = https://github.com/WaylonWalker/devtainer.git
+[submodule "example/spark"]
+	path = example/spark
+	url = https://github.com/pigmonkey/spark.git

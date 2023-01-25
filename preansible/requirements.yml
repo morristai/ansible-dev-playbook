@@ -1,0 +1,5 @@
+collections:
+  - name: community.genera # Install Community General Collection
+  - name: chocolatey.chocolatey
+  - name: kewlfft.aur  # https://galaxy.ansible.com/kewlfft/aur
+  
