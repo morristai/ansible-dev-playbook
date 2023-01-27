@@ -7,3 +7,9 @@
 [submodule "example/spark"]
 	path = example/spark
 	url = https://github.com/pigmonkey/spark.git
+[submodule "example/windows-playbook"]
+	path = example/windows-playbook
+	url = https://github.com/AlexNabokikh/windows-playbook.git
+[submodule "example/Ansible-WSL"]
+	path = example/Ansible-WSL
+	url = https://github.com/Wintus/Ansible-WSL.git

@@ -6,4 +6,6 @@ collections:
   - name: community.general # Install Community General Collection
   - name: chocolatey.chocolatey
   - name: kewlfft.aur  # https://galaxy.ansible.com/kewlfft/aur
+  - name: ansible.windows
+  - name: community.windows
   

@@ -1,5 +1,5 @@
 ---
-- hosts: all
-  become: yes
+- hosts: windows
+  # become: yes
   roles:
-    - { role: base, tags:['base'] }
+    - { role: base, tags: ['base'] }
