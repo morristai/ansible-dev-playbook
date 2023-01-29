@@ -7,18 +7,12 @@
     - name: Windows test connection
       ansible.windows.win_ping:
 
-    # - name: Include playbook configuration.
-    #   include_vars: "{{ item }}"
-    #   with_fileglob:
-    #     - "{{ playbook_dir }}/config.yml"
-    #   tags: ["always"]
-
   tasks:
-    - name: debug
-      ansible.builtin.debug:
-        # msg: "{{ ansible_env }}"
-        msg: "{{ lookup('env', 'HOME') }}"
-      tags: ["debug"]
+    # - name: Debug
+    #   ansible.builtin.debug:
+    #     msg: "{{ ansible_env }}"
+    #     msg: "{{ lookup('env', 'HOME') }}"
+    #   tags: ["debug"]
 
     - name: Remove bloatware
       ansible.builtin.import_tasks: tasks/debloat.yml
@@ -37,5 +31,55 @@
       ansible.builtin.import_tasks: tasks/fonts.yml
       when: install_fonts
       tags: ["fonts"]
+
+    - name: PowerShell Setting
+      ansible.builtin.import_tasks: tasks/ohmyposh.yml
+      when: install_ohmyposh
+      tags: ["ohmyposh"]
+
+    - name: Explorer Setting
+      ansible.builtin.import_tasks: tasks/explorer.yml
+      when: configure_explorer
+      tags: ["explorer"]
+
+    - name: Taskbar Setting
+      ansible.builtin.import_tasks: tasks/taskbar.yml
+      when: configure_taskbar
+      tags: ["taskbar"]
+
+    - name: Start Menu Setting
+      ansible.builtin.import_tasks: tasks/start_menu.yml
+      when: configure_start_menu
+      tags: ["start_menu"]
+
+    - name: Sounds Setting
+      ansible.builtin.import_tasks: tasks/sounds.yml
+      when: set_sound_scheme
+      tags: ["sounds"]
+
+    - name: Mouse Setting
+      ansible.builtin.import_tasks: tasks/mouse.yml
+      when: disable_mouse_acceleration
+      tags: ["mouse"]
+
+    - name: Power Plan Setting
+      ansible.builtin.import_tasks: tasks/power_plan.yml
+      when: change_power_plan
+      tags: ["power"]
+
+    - name: Remote Desktop Setting
+      ansible.builtin.import_tasks: tasks/remote_desktop.yml
+      when: remote_desktop_enabled
+      tags: ["remote_desktop"]
+
+    - name: Remove Desktop Icons
+      ansible.builtin.import_tasks: tasks/desktop.yml
+      when: remove_desktop_icons
+      tags: ["desktop_icon"]
+
+    - name: Defrag Setting
+      ansible.builtin.import_tasks: tasks/defrag.yml
+      when: defrag_volumes
+      tags: ["defrag"]
 
   tags: "windows"

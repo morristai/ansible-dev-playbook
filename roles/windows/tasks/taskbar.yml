@@ -1,0 +1,40 @@
+---
+- name: Unpin 'Search' from Taskbar.
+  ansible.windows.win_regedit:
+    path: HKCU:\Software\Microsoft\Windows\CurrentVersion\Search
+    name: SearchboxTaskbarMode
+    data: 0
+    type: dword
+
+- name: Unpin Task View, Chat and Cortana from Taskbar.
+  ansible.windows.win_regedit:
+    path: HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced
+    name: "{{ item }}"
+    data: 0
+    type: dword
+  loop:
+    - ShowCortanaButton
+    - ShowTaskViewButton
+    - TaskbarDa
+    - TaskbarMn
+
+- name: Unpin 'News and Interests' from Taskbar.
+  ansible.windows.win_regedit:
+    path: HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Feeds
+    name: EnableFeeds
+    data: 0
+    type: dword
+    state: present
+
+- name: Unpin 'People' from Taskbar.
+  ansible.windows.win_regedit:
+    path: HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People
+    name: PeopleBand
+    data: 0
+    type: dword
+
+- name: Unpin 'Edge', 'Store' other built-in shortcuts from Taskbar.
+  ansible.windows.win_regedit:
+    path: HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband
+    name: Favorites
+    state: absent

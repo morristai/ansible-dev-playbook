@@ -1,3 +1,12 @@
+install_ohmyposh: true
+configure_explorer: true
+configure_taskbar: true
+configure_start_menu: true
+set_sound_scheme: true
+disable_mouse_acceleration: false
+remote_desktop_enabled: false
+remove_desktop_icons: false
+
 remove_bloatware: true
 bloatware:
   - Microsoft.BingNews
@@ -111,3 +120,14 @@ installed_nerdfonts:
   # - Hack
   - Menlo
   - JetBrainsMono
+
+# TODO: error 'Defined power_plan: (8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c) is not available'
+change_power_plan: false
+# high_performance
+# balanced
+# power_saver
+power_plan: "high_performance"
+
+defrag_volumes: true
+include_volumes:
+  - C
