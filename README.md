@@ -1,38 +1,69 @@
 # My Dev PC/Mac Setup Ansible Playbook
-This playbook installs and configures most of the software I use on my Windows machine for software development and entertainment.
 
-## Project Structure
+This playbook installs and configures most of the software I use on my machines for software development and entertainment.
 
-## Todo
-ansible-lint
+# Project Structure
+```bash
+│   ansible.cfg
+│   inventory.ini
+│   playbook.yml
+│   Makefile
+├───preansible (install before ansible)
+│   ├───windows / macos / wsl
+└───roles
+    ├───windows / macos / wsl
+    │   │   main.yml (role entry)
+    │   ├───tasks (tasks file)
+    │   ├───default (var file)
+    └───└───files (static/config files)
+```
+# Todo
 
-## How to use this repo
+1. windows
+    - mpv config
+    - ohmypowh config
+    - nvim setup
 
-### Setup Windows Host
+2. ansible-lint
+
+# How to use
+
+## Setup Windows Host
 
 ```powershell
-# Inside Adminstrator Powershell
+cd preansible/windows
+# Run inside Adminstrator Powershell
 ./win_setup.ps1
-```
+# Run inside WSL
+./wsl_setup.sh
 
-Run
-```bash
-ansible-playbook playbook.yml --ask-become-pass
-```
-
-Running a specific set of tagged tasks
-```bash
-ansible-playbook your_role.yml -K --tags "dotfiles,homebrew"
-```
-
-```bash
-# hostip=$(wsl.exe hostname -I) # won't work, and need to install inetutils first
 # Get the IP address of the desktop / windows host in WSL2
 hostip=$(ipconfig.exe | grep 'vEthernet (WSL)' -A4 | cut -d":" -f 2 | tail -n1 | sed -e 's/\s*//g')
 ```
 
-## Links
+
+## Run Playbook
+
+```bash
+make play_windows
+```
+
+## Running a specific set of tagged tasks
+
+```bash
+TAGS=choco make play_windows
+TAGS="choco,winget" make play_windows
+```
+
+# Reference Links
+
 - [Ansible Chocolatey Doc](https://docs.ansible.com/ansible/latest/collections/chocolatey/chocolatey/win_chocolatey_module.html#notes)
 - [Ansible Chocolatey GitHub](https://github.com/chocolatey/chocolatey-ansible)
-- [Comment Block](https://blocks.jkniest.dev/)
-- [Mac Development Ansible Playbook](https://github.com/geerlingguy/mac-dev-playbook)
+
+# Reference Repos
+
+- [mac-dev-playbook](https://github.com/geerlingguy/mac-dev-playbook.git)
+- [devtainer](https://github.com/WaylonWalker/devtainer.git)
+- [spark](https://github.com/pigmonkey/spark.git)
+- [windows-playbook](https://github.com/AlexNabokikh/windows-playbook.git)
+- [Ansible-WSL](https://github.com/Wintus/Ansible-WSL.git)
