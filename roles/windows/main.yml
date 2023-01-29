@@ -1,0 +1,41 @@
+- hosts: "windows"
+  name: Windows Setup
+  vars_files:
+    - default/main.yml
+
+  pre_tasks:
+    - name: Windows test connection
+      ansible.windows.win_ping:
+
+    # - name: Include playbook configuration.
+    #   include_vars: "{{ item }}"
+    #   with_fileglob:
+    #     - "{{ playbook_dir }}/config.yml"
+    #   tags: ["always"]
+
+  tasks:
+    - name: debug
+      ansible.builtin.debug:
+        # msg: "{{ ansible_env }}"
+        msg: "{{ lookup('env', 'HOME') }}"
+      tags: ["debug"]
+
+    - name: Remove bloatware
+      ansible.builtin.import_tasks: tasks/debloat.yml
+      when: remove_bloatware
+      tags: ["debloat"]
+
+    - name: Install Chocolatey packages
+      ansible.builtin.import_tasks: tasks/chocolatey.yml
+      tags: ["choco"]
+
+    - name: Install winget packages
+      ansible.builtin.import_tasks: tasks/winget.yml
+      tags: ["winget"]
+
+    - name: Install nerd fonts
+      ansible.builtin.import_tasks: tasks/fonts.yml
+      when: install_fonts
+      tags: ["fonts"]
+
+  tags: "windows"

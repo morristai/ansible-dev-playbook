@@ -9,3 +9,6 @@ activate-global-python-argcomplete --user # for bash
 
 # Ansible Galaxy init, sometime need to try sometime
 ansible-galaxy collection install -r requirements.yml
+
+# install pywinrm for ansible on WSL
+pip install -U pywinrm

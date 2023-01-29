@@ -1,5 +1,12 @@
 ---
-- hosts: windows
-  # become: yes
+- hosts: 'wsl'
   roles:
-    - { role: base, tags: ['base'] }
+    - 'wsl'
+  tags: 'linux'
+
+
+
+- hosts: 'macos'
+  roles:
+    - 'macos'
+  tags: macos

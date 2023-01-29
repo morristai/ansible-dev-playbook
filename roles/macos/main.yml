@@ -1,0 +1,7 @@
+- hosts: "macos"
+  name: Mac OS Setup
+  vars_files:
+    - default/main.yml
+
+  pre_tasks:
+  tasks:

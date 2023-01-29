@@ -1,0 +1,113 @@
+remove_bloatware: true
+bloatware:
+  - Microsoft.BingNews
+  - Microsoft.BingWeather
+  - Microsoft.GamingApp
+  - Microsoft.GetHelp
+  - Microsoft.Getstarted
+  # - Microsoft.Messaging
+  - Microsoft.Microsoft3DViewer
+  - Microsoft.MicrosoftOfficeHub
+  - Microsoft.MicrosoftSolitaireCollection
+  - Microsoft.MicrosoftStickyNotes
+  - Microsoft.MixedReality.Portal
+  # - Microsoft.MSPaint
+  - Microsoft.Office.OneNote
+  - Microsoft.OneConnect
+  - Microsoft.People
+  - Microsoft.PowerAutomateDesktop
+  - Microsoft.Print3D
+  - Microsoft.ScreenSketch
+  - Microsoft.SkypeApp
+  - Microsoft.Todos
+  - Microsoft.Windows.Photos
+  - Microsoft.WindowsAlarms
+  # - Microsoft.WindowsCalculator
+  - Microsoft.Wallet
+  - Microsoft.WindowsCamera
+  # - microsoft.windowscommunicationsapps
+  - Microsoft.WindowsFeedbackHub
+  - Microsoft.WindowsMaps
+  - Microsoft.WindowsSoundRecorder
+  - Microsoft.Xbox
+  - Microsoft.Xbox.TCUI
+  - Microsoft.XboxApp
+  - Microsoft.XboxGameOverlay
+  - Microsoft.XboxSpeechToTextOverlay
+  # - Microsoft.YourPhone
+  - Microsoft.ZuneMusic
+  - Microsoft.ZuneVideo
+
+choco_installed_packages:
+  - name: Firefox
+    state: latest
+    choco_args: --ignorechecksum
+
+  - name: git.install
+    state: latest
+    params: "/GitOnlyOnPath /NoGuiHereIntegration /NoShellHereIntegration /Symlinks /Editor:VisualStudioCode"
+
+  - chocolateygui
+  - powertoys
+
+  - files
+  - autohotkey
+
+  - jetbrainstoolbox
+  - vscode
+  - neovim
+  - neovide
+
+  - microsoft-windows-terminal
+  - 7zip.install
+
+  - discord
+  - telegram
+  - messenger
+  - line
+  - wechat
+  - slack
+  - microsoft-teams.install
+
+  - notion-repackaged
+  - foxitreader
+  - remote-desktop-client
+  - postman
+
+  - steam
+  - mpv
+  - qbittorrent
+  - aegisub
+
+  - powershell-core
+  - oh-my-posh
+  - adb
+
+  - jetbrainsmononf
+
+  - rancher-desktop
+  - visualstudio2022buildtools
+
+  - cpu-z.install
+  - winfetch
+  - speedtest
+
+  # - golang
+  # - jre8
+  # - kubernetes-cli
+  # - peazip
+  # - python3
+  # - sharex
+  # - terraform
+
+winget_packages:
+  # - name: "Auto Dark Mode"
+  #   source: winget
+  - name: WinDynamicDesktop
+    source: winget
+
+install_fonts: true
+installed_nerdfonts:
+  # - Hack
+  - Menlo
+  - JetBrainsMono

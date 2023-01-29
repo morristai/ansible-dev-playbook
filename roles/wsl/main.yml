@@ -1,0 +1,7 @@
+- hosts: "wsl"
+  name: WSL Setup
+  vars_files:
+    - default/main.yml
+
+  pre_tasks:
+  tasks:

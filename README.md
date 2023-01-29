@@ -4,6 +4,7 @@ This playbook installs and configures most of the software I use on my Windows m
 ## Project Structure
 
 ## Todo
+ansible-lint
 
 ## How to use this repo
 

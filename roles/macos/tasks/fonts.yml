@@ -4,6 +4,12 @@
     shell: command -v gh
     register: gh_exists
     ignore_errors: yes
+  
+  - name: Install gh
+    when: gh_exists is failed
+    become_user: root
+    become_method: sudo
+    pacman: name=github-cli state=latest
 
   # - name: ensure fonts directory
   #   file:
