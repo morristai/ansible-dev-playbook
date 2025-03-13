@@ -6,8 +6,8 @@ set_sound_scheme: true
 disable_mouse_acceleration: false
 remote_desktop_enabled: false
 remove_desktop_icons: false
-
 remove_bloatware: true
+
 bloatware:
   - Microsoft.BingNews
   - Microsoft.BingWeather

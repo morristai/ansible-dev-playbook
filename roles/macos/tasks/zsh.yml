@@ -1,0 +1,12 @@
+- name: Setup zsh plugins
+  tasks:
+  - name: Install zsh-autosuggestions plugin
+    ansible.builtin.git:
+      repo: https://github.com/zsh-users/zsh-autosuggestions.git
+      dest: ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+
+  - name: Configure oh-my-zsh plugins
+    ansible.builtin.lineinfile:
+      path: ~/.zshrc
+      regexp: '^plugins='
+      line: 'plugins=(git zsh-autosuggestions)'

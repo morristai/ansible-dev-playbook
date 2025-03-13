@@ -4,9 +4,12 @@
     - 'wsl'
   tags: 'linux'
 
-
-
 - hosts: 'macos'
   roles:
     - 'macos'
   tags: macos
+
+- hosts: 'windows'
+  roles:
+    - 'windows'
+  tags: 'windows'

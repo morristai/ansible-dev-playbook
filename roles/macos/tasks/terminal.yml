@@ -1,0 +1,52 @@
+---
+- name: Ensure Homebrew is installed
+  ansible.builtin.stat:
+    path: /opt/homebrew/bin/brew
+  register: brew_stat
+
+- name: Install Homebrew
+  ansible.builtin.shell: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  when: not brew_stat.stat.exists
+
+- name: Update Homebrew
+  community.general.homebrew:
+    update_homebrew: yes
+
+- name: Install required packages
+  community.general.homebrew:
+    name: "{{ brew_packages }}"
+    state: present
+
+- name: Check if oh-my-zsh is installed
+  ansible.builtin.stat:
+    path: ~/.oh-my-zsh
+  register: oh_my_zsh_stat
+
+- name: Install oh-my-zsh
+  ansible.builtin.shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+  when: not oh_my_zsh_stat.stat.exists
+
+- name: Get current default shell
+  ansible.builtin.command: dscl . -read /Users/{{ ansible_user_id }} UserShell
+  register: current_shell
+  changed_when: false
+
+- name: Set zsh as default shell
+  ansible.builtin.command: chsh -s /bin/zsh
+  when: "'/bin/zsh' not in current_shell.stdout"
+
+- name: Ensure .zshrc exists
+  ansible.builtin.file:
+    path: ~/.zshrc
+    state: touch
+
+- name: Add zoxide init to .zshrc
+  ansible.builtin.lineinfile:
+    path: ~/.zshrc
+    line: 'eval "$(zoxide init zsh)"'
+    state: present
+
+- name: Install fzf key bindings
+  ansible.builtin.shell: /usr/local/opt/fzf/install --all
+  args:
+    creates: ~/.fzf.zsh

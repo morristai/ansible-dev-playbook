@@ -1,0 +1,12 @@
+install_terminal_tools: true
+ansible_user_id: "{{ ansible_user_id | default(ansible_env.USER) }}"
+
+brew_packages:
+  - zsh
+  - git
+  - gh
+  - ripgrep
+  - fd
+  - fzf
+  - zoxide
+  - bat

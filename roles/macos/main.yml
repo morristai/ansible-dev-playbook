@@ -1,7 +1,13 @@
-- hosts: "macos"
-  name: Mac OS Setup
+- name: Mac OS Setup
+  hosts: local
   vars_files:
-    - default/main.yml
-
-  pre_tasks:
+    - var/default.yml
   tasks:
+    - name: Install terminal tools
+      ansible.builtin.import_tasks: tasks/terminal.yml
+      when: install_terminal_tools
+      tags: ["terminal"]
+    # - name: Setup zsh
+    #   ansible.builtin.import_tasks: tasks/zsh.yml
+    #   when: install_terminal_tools
+    #   tags: ["zsh"]
